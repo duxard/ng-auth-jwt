@@ -33,10 +33,9 @@ export class AuthService {
       errorMessage = error.error.message;
     } else {
       // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = `Error Code: ${error.status}\nReason: ${error.error}`;
     }
     return throwError(errorMessage);
   }
-
 }
 
