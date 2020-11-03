@@ -10,6 +10,7 @@ import {Credentials} from './credentials';
 export class AuthService {
 
   private registerUrl = 'http://localhost:3000/api/aat/register';
+  private loginUrl = 'http://localhost:3000/api/aat/login';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -22,6 +23,13 @@ export class AuthService {
     return this.http.post<Credentials>(this.registerUrl, user, this.httpOptions)
       .pipe(
         retry(1),
+        catchError(this.errorHandler)
+      );
+  }
+
+  loginUser(user): Observable<Credentials> {
+    return this.http.post<Credentials>(this.loginUrl, user, this.httpOptions)
+      .pipe(
         catchError(this.errorHandler)
       );
   }
