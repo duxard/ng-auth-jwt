@@ -3,14 +3,15 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, retry} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
 import {Credentials} from './credentials';
+import {API_BASE} from '../restApiBase';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private registerUrl = 'http://localhost:3000/api/aat/register';
-  private loginUrl = 'http://localhost:3000/api/aat/login';
+  private registerUrl = `${API_BASE}/register`;
+  private loginUrl = `${API_BASE}/login`;
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'

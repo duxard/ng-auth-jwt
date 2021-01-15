@@ -3,14 +3,15 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 import {Events} from './events';
+import {API_BASE} from '../restApiBase';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  private publicEventsUrl = 'http://localhost:3000/api/aat/events';
-  private specialEventsUrl = 'http://localhost:3000/api/aat/special';
+  private publicEventsUrl = `${API_BASE}/events`;
+  private specialEventsUrl = `${API_BASE}/special`;
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
