@@ -46,5 +46,11 @@ export class AuthService {
     }
     return throwError(errorMessage);
   }
+
+  loggedIn(): boolean {
+    // is the user logged in? (is there a token exists for this user in browser?)
+    return !!localStorage.getItem('token');
+  }
+
 }
 
