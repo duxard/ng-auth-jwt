@@ -29,11 +29,11 @@ export class EventService {
   }
 
   getSpecialEvents(): Observable<Array<Events>> {
-    return this.http.get<any>(this.specialEventsUrl, this.httpOptions)
-      .pipe(
-        retry(1),
-        catchError(this.errorHandler)
-      );
+    return this.http.get<any>(this.specialEventsUrl, this.httpOptions);
+      // .pipe(
+      //   retry(1),
+      //   catchError(this.errorHandler)
+      // );
   }
 
   errorHandler(error: any): Observable<never> {
